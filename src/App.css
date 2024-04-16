@@ -42,7 +42,7 @@ body {
 }
 
 .background-image {
-  position: absolute;
+  position: fixed; /* Use fixed positioning to ensure the image stays in place */
   top: 0;
   left: 0;
   width: 100%;
@@ -50,5 +50,4 @@ body {
   object-fit: cover;
   z-index: -1;
   filter: brightness(20%);
-
 }

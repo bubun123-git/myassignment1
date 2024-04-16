@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import "../Components/Welcome.css";
+import Employee from "./Employee";
 import { useEffect } from "react";
+import "../Components/Welcome.css";
 
 function Welcome() {
   const [formData, setFormData] = useState({
@@ -19,6 +20,9 @@ function Welcome() {
 
   const [errors, setErrors] = useState({});
   const [emails, setEmails] = useState([]);
+  const [submittedDataList, setSubmittedDataList] = useState([]);
+  const [editIndex, setEditIndex] = useState(null);
+  
 
   useEffect(() => {
     setEmails((prevEmails) => {
@@ -64,13 +68,49 @@ function Welcome() {
           ? files[0]
           : value,
     }));
+
+    if (name === "courses") {
+      setFormData((prevData) => ({
+        ...prevData,
+        courses: Object.keys(prevData.courses)
+          .map((key) => ({ [key]: e.target.value === key }))
+          .filter((course) => Object.values(course)[0])[0],
+      }));
+    }
+  };
+
+  const handleEdit = (index) => {
+    setEditIndex(index);
+    // Populate the form with the details of the selected user
+    setFormData(submittedDataList[index]);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // You can handle form submission here
-    console.log(formData);
+    if (editIndex !== null) {
+      const updatedDataList = submittedDataList.map((item, index) =>
+        index === editIndex ? formData : item
+      );
+      setSubmittedDataList(updatedDataList);
+    } else {
+      setSubmittedDataList((prevList) => [...prevList, formData]);
+    }
+    setFormData({
+      name: "",
+      email: "",
+      mobile: "",
+      designation: "",
+      gender: "",
+      courses: {
+        MCA: false,
+        BCA: false,
+        BSc: false,
+      },
+      image: null,
+    });
+    setEditIndex(null);
   };
+  
 
   return (
     <div className="welcome-container">
@@ -196,9 +236,9 @@ function Welcome() {
           Submit
         </button>
       </form>
+      <Employee submittedDataList={submittedDataList} onEdit={handleEdit} />
     </div>
   );
 }
-
 
 export default Welcome;

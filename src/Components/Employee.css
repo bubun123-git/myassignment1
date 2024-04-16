@@ -1,0 +1,29 @@
+.submitted-data-container {
+    margin-top: 50px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f5f5f5;
+  }
+  
+  .submitted-data-table td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    font-weight: bold;
+    color: black;
+  }
+  
+  .submitted-data-table th,
+  .submitted-data-table td {
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  .submitted-data-table th {
+    background-color: #333
+  }
+  .submitted-data-table td.name,
+.submitted-data-table td.email {
+  font-weight: bold;
+  color: black;
+}
