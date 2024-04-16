@@ -1,0 +1,31 @@
+/* Mainheader.css */
+
+.main-header {
+    background-color: #333; /* Dark background color */
+    color: #fff; /* Text color */
+    padding: 20px 0; /* Top and bottom padding */
+  }
+  
+  .nav-list {
+    list-style-type: none; /* Remove bullet points */
+    padding: 0;
+  }
+  
+  .nav-item {
+    display: inline-block; /* Display list items horizontally */
+    margin-right: 20px; /* Spacing between list items */
+  }
+  
+  .nav-item:last-child {
+    margin-right: 0; /* Remove margin from last list item */
+  }
+  
+  .nav-link {
+    text-decoration: none; /* Remove underline from links */
+    color: #fff; /* Text color */
+  }
+  
+  .nav-link:hover {
+    color: #ffd700; /* Change text color on hover */
+  }
+  
