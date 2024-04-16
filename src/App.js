@@ -5,14 +5,17 @@ import { Route } from "react-router-dom";
 import Employee from "./Components/Employee";
 import Welcome from "./Components/Welcome";
 import Mainheader from "./Components/Mainheader";
+import { useState } from "react";
 
 function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
   return (
     <div className="App">
-      <Mainheader/>
+      <Mainheader isAuthenticated={isAuthenticated} />
       <h1 style={{ textDecoration: "underline" }}>Employee Detail</h1>
       <Route path="/Home">
-        <Signup />
+        <Signup setIsAuthenticated={setIsAuthenticated} />
       </Route>
       <Route path="/Welcome">
         <Welcome />
