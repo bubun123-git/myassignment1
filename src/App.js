@@ -6,6 +6,7 @@ import Employee from "./Components/Employee";
 import Welcome from "./Components/Welcome";
 import Mainheader from "./Components/Mainheader";
 import { useState } from "react";
+import image from "./Components/images.jpg";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -13,7 +14,8 @@ function App() {
   return (
     <div className="App">
       <Mainheader isAuthenticated={isAuthenticated} />
-      <h1 style={{ textDecoration: "underline" }}>Employee Detail</h1>
+      <img src={image} alt="Background Image" className="background-image" />
+
       <Route path="/Home">
         <Signup setIsAuthenticated={setIsAuthenticated} />
       </Route>

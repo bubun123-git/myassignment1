@@ -1,7 +1,11 @@
-import React from "react";
+import React from 'react'
 
 function Employee() {
-  return <div>Employee Details</div>;
+  return (
+    <div>
+      Employee
+    </div>
+  )
 }
 
-export default Employee;
+export default Employee
