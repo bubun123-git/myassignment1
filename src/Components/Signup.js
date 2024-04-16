@@ -1,30 +1,47 @@
 import React from "react";
 import { useState } from "react";
 import "../Components/Signup.css";
-
+import axios from "axios";
 
 function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isSigningUp, setIsSigningUp] = useState(false); // State variable to track whether user wants to sign up
+  const [isSigningUp, setIsSigningUp] = useState(false);
 
   const toggleSignup = () => {
     setIsSigningUp(!isSigningUp);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (isSigningUp) {
-      // Handle account creation logic here
-      console.log(
-        "Creating account with email:",
-        email,
-        "and password:",
-        password
-      );
-    } else {
-      // Handle login logic here
-      console.log("Logging in with email:", email, "and password:", password);
+    try {
+      if (isSigningUp) {
+        // Account creation logic
+        const response = await axios.post(
+          "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCwZFt25ST3OnHZR2xua7M1HLrh8SaKEdE",
+          {
+            email: email,
+            password: password,
+            returnSecureToken: true,
+          }
+        );
+        alert("Account created successfully!");
+        console.log("Account created successfully:", response.data);
+      } else {
+        // Sign-in logic
+        const response = await axios.post(
+          "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCwZFt25ST3OnHZR2xua7M1HLrh8SaKEdE",
+          {
+            email: email,
+            password: password,
+            returnSecureToken: true,
+          }
+        );
+        alert("Sign in successfully!");
+        console.log("Signed in successfully:", response.data);
+      }
+    } catch (error) {
+      console.error("Error:", error.response.data.error.message);
     }
   };
 
