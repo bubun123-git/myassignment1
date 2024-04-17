@@ -18,7 +18,7 @@ function Employee({ submittedDataList, onEdit }) {
   }, [submittedDataList]);
   return (
     <div className="submitted-data-container">
-      <h2 style={{ color: "black" }}>Submitted Data</h2>
+      <h2 style={{ color: "black" }}> Submitted Employee Data</h2>
       <table className="submitted-data-table">
         <thead>
           <tr>
