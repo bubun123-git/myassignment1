@@ -2,14 +2,14 @@ import React, { useEffect, useState } from "react";
 import "../Components/Employee.css";
 
 function Employee({ submittedDataList, onEdit }) {
-    const [editIndex, setEditIndex] = useState(null);
+  const [editIndex, setEditIndex] = useState(null);
 
-    const handleEditClick = (index) => {
-        setEditIndex(index);
-        // Pass the index of the user being edited to the parent component
-        onEdit(index);
-      };
-    
+  const handleEditClick = (index) => {
+    setEditIndex(index);
+    // Pass the index of the user being edited to the parent component
+    onEdit(index);
+  };
+
   useEffect(() => {
     localStorage.setItem(
       "submittedDataList",
@@ -55,7 +55,19 @@ function Employee({ submittedDataList, onEdit }) {
                 )}
               </td>
               <td>
-                <button onClick={() => handleEditClick(index)}>Edit</button>
+                <button
+                  style={{
+                    backgroundColor: "blue",
+                    color: "white",
+                    padding: "5px 10px",
+                    border: "none",
+                    borderRadius: "4px",
+                    cursor: "pointer",
+                  }}
+                  onClick={() => handleEditClick(index)}
+                >
+                  Edit
+                </button>
               </td>
             </tr>
           ))}
