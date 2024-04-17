@@ -20,9 +20,11 @@ function Welcome() {
 
   const [errors, setErrors] = useState({});
   const [emails, setEmails] = useState([]);
-  const [submittedDataList, setSubmittedDataList] = useState([]);
+  const [submittedDataList, setSubmittedDataList] = useState(() => {
+    const storedData = localStorage.getItem("submittedDataList");
+    return storedData ? JSON.parse(storedData) : [];
+  });
   const [editIndex, setEditIndex] = useState(null);
-  
 
   useEffect(() => {
     setEmails((prevEmails) => {
